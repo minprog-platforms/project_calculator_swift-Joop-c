@@ -9,22 +9,51 @@ import Foundation
 import SwiftUI
 
 struct Calculator {
-    let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    let functions = ["+", "-", "*", "/"]
     
-    func Multiply(x: Float, y: Float) -> Float {
-        return x * y
+    enum Operations{
+        case plus
+        case min
+        case multiply
+        case divide
+    }
+
+    var currentNumber: Float = 0
+    var previousNumber: Float = 0
+    var currentOperation = Operations.plus
+    var inputtingNumber = true
+    var display = ""
+    
+    mutating func numberPress(_ x: Float) -> Void{
+        if inputtingNumber{
+            self.currentNumber = 10 * self.currentNumber + x
+        }
+        else{
+            self.currentNumber = x
+            self.inputtingNumber = true
+        }
+        self.display = String(currentNumber)
     }
     
-    func Add(x: Float, y: Float) -> Float {
-        return x + y
+    mutating func functionPress(operation: Operations) -> Void{
+        self.calculate()
+        self.currentOperation = operation
+        self.inputtingNumber = false
     }
     
-    func Substract(x: Float, y: Float) -> Float {
-            return x - y
+    mutating func calculate()-> Void{
+        var result: Float
+        switch currentOperation {
+        case .plus:
+            result = self.previousNumber + self.currentNumber
+        case .min:
+            result = self.previousNumber - self.currentNumber
+        case .multiply:
+            result = self.previousNumber * self.currentNumber
+        case .divide:
+            result = self.previousNumber / self.currentNumber
+        }
+        self.display = String(result)
+        self.previousNumber = result
     }
     
-    func divide(x: Float, y: Float) -> Float {
-        return x / y
-    }
 }
