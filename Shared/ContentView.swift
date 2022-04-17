@@ -7,30 +7,24 @@
 
 import SwiftUI
 
-var calculator = Calculator()
 
 struct ContentView: View {
+    @State var calculator = Calculator()
     var body: some View {
         VStack(alignment: .center){
             Text(calculator.display)
             HStack{
                 Button(
                     action: {
-                        // did tap
+                        calculator.allClear()
                     },
                     label: { Text("AC") }
                 )
                 Button(
                     action: {
-                        // did tap
+                        calculator.plusMinusButton()
                     },
                     label: { Text("+/-") }
-                )
-                Button(
-                    action: {
-                        // did tap
-                    },
-                    label: { Text("%") }
                 )
                 Button(
                     action: {
@@ -42,19 +36,19 @@ struct ContentView: View {
             HStack{
                 Button(
                     action: {
-                        calculator.numberPress(7)
+                        calculator.numberPress("7")
                     },
                     label: { Text("7") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(8)
+                        calculator.numberPress("8")
                     },
                     label: { Text("8") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(9)
+                        calculator.numberPress("9")
                     },
                     label: { Text("9") }
                 )
@@ -68,19 +62,19 @@ struct ContentView: View {
             HStack{
                 Button(
                     action: {
-                        calculator.numberPress(4)
+                        calculator.numberPress("4")
                     },
                     label: { Text("4") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(5)
+                        calculator.numberPress("5")
                     },
                     label: { Text("5") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(6)
+                        calculator.numberPress("6")
                     },
                     label: { Text("6") }
                 )
@@ -94,19 +88,19 @@ struct ContentView: View {
             HStack{
                 Button(
                     action: {
-                        calculator.numberPress(1)
+                        calculator.numberPress("1")
                     },
                     label: { Text("1") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(2)
+                        calculator.numberPress("2")
                     },
                     label: { Text("2") }
                 )
                 Button(
                     action: {
-                        calculator.numberPress(3)
+                        calculator.numberPress("3")
                     },
                     label: { Text("3") }
                 )
@@ -120,13 +114,13 @@ struct ContentView: View {
             HStack{
                 Button(
                     action: {
-                        calculator.numberPress(0)
+                        calculator.numberPress("0")
                     },
                     label: { Text("0") }
                 )
                 Button(
                     action: {
-                        // did tap
+                        calculator.decimalButton()
                     },
                     label: { Text(",") }
                 )
